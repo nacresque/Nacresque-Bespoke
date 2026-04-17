@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nacresque Bespoke | Commission Protocol</title>
+    <title>Nacresque Bespoke</title>
     <style>
         /* The Minimaluxe Canvas */
         body {
@@ -33,6 +33,16 @@
             color: #ffffff;
         }
 
+        h2 {
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-align: left;
+        }
+
         p.subtitle {
             font-size: 12px;
             color: #8c8c8c;
@@ -41,20 +51,23 @@
             line-height: 1.6;
         }
 
-        /* 3-Image Grid Layout */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 40px;
+        /* Image Architecture */
+        .landscape-image {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            background-color: #111; /* Dark grey placeholder */
+            border: 1px solid #222;
+            object-fit: cover;
+            margin-bottom: 30px;
         }
 
-        .image-placeholder {
+        .content-image {
             width: 100%;
-            aspect-ratio: 1 / 1;
-            background-color: #1a1a1a; /* Dark grey placeholder */
-            border: 1px solid #333;
+            aspect-ratio: 3 / 2;
+            background-color: #111;
+            border: 1px solid #222;
             object-fit: cover;
+            margin: 30px 0;
         }
 
         /* The Velvet Rope Button */
@@ -69,7 +82,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
 
         button.trigger-btn:hover {
@@ -85,7 +98,8 @@
             background-color: #111;
             padding: 30px;
             border: 1px solid #333;
-            margin-bottom: 40px;
+            margin-top: 20px;
+            margin-bottom: 30px;
         }
 
         .form-group {
@@ -135,6 +149,57 @@
             margin-top: 10px;
         }
 
+        /* Commission Protocol Layout */
+        .protocol-section {
+            text-align: left;
+            border-top: 1px solid #222;
+            padding-top: 40px;
+            margin-top: 20px;
+        }
+
+        .protocol-section ol {
+            padding-left: 20px;
+            margin: 0;
+            color: #8c8c8c;
+            font-size: 12px;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+        }
+
+        .protocol-section li {
+            margin-bottom: 25px;
+            padding-left: 10px;
+        }
+
+        .protocol-section strong {
+            color: #e0e0e0;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Instagram Link */
+        .insta-link {
+            display: inline-block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #8c8c8c;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+            padding-bottom: 4px;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .insta-link:hover {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
         /* Footer & Legal */
         .footer {
             border-top: 1px solid #222;
@@ -174,13 +239,9 @@
         <h1>Nacresque Bespoke</h1>
         <p class="subtitle">Design house & manufacturing atelier.<br>Damascus, Syria.</p>
 
-        <div class="image-grid">
-            <img class="image-placeholder" src="" alt="Nacresque Material 1">
-            <img class="image-placeholder" src="" alt="Nacresque Material 2">
-            <img class="image-placeholder" src="" alt="Nacresque Blueprint">
-        </div>
+        <img class="landscape-image" src="" alt="Nacresque Material Standard">
 
-        <button class="trigger-btn" id="open-form-btn">Initiate Commission Protocol</button>
+        <button class="trigger-btn" id="open-form-btn">Request Material Standard</button>
 
         <div id="commission-form-container">
             <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
@@ -219,6 +280,34 @@
             </form>
         </div>
 
+        <img class="content-image" src="" alt="Nacresque Execution">
+
+        <div class="protocol-section">
+            <h2>Commission Protocol</h2>
+            <ol>
+                <li>
+                    <strong>1. Studio Specification</strong>
+                    Submit dimensions, functional requirements, and blueprints for your projects.
+                </li>
+                <li>
+                    <strong>2. Shop Drawing</strong>
+                    We return bespoke architectural drafts, scaling our nacre style to your specifications alongside the commission quote.
+                </li>
+                <li>
+                    <strong>3. Execution</strong>
+                    The first deposit initiates production. You will be provided with weekly step-by-step visual documentation from the cutting of raw walnut to the final nacre polish.
+                </li>
+                <li>
+                    <strong>4. Export & Delivery</strong>
+                    The final deposit initiates dispatch. All international freight, export clearance, and direct-to-site deliveries are managed through the Aramex global logistics network.
+                </li>
+            </ol>
+        </div>
+
+        <img class="content-image" src="" alt="Nacresque Export Logistics">
+
+        <a href="https://instagram.com/nacresquebespoke" class="insta-link" target="_blank">Instagram / @nacresquebespoke</a>
+
         <div class="footer">
             <span class="terms-toggle" id="terms-btn">Terms of Commission +</span>
             <div id="terms-content">
@@ -235,12 +324,11 @@
         openFormBtn.addEventListener('click', () => {
             if (formContainer.style.display === 'block') {
                 formContainer.style.display = 'none';
-                openFormBtn.textContent = 'Initiate Commission Protocol';
+                openFormBtn.textContent = 'Request Material Standard';
             } else {
                 formContainer.style.display = 'block';
                 openFormBtn.textContent = 'Close Form';
-                // Scroll to form
-                formContainer.scrollIntoView({ behavior: 'smooth' });
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
 
