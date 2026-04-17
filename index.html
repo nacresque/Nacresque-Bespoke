@@ -55,7 +55,7 @@
         .landscape-image {
             width: 100%;
             aspect-ratio: 3 / 2;
-            background-color: #111; /* Dark grey placeholder */
+            background-color: #111; 
             border: 1px solid #222;
             object-fit: cover;
             margin-bottom: 30px;
@@ -70,8 +70,8 @@
             margin: 30px 0;
         }
 
-        /* The Velvet Rope Button */
-        button.trigger-btn {
+        /* Velvet Rope Buttons */
+        .trigger-btn {
             background-color: transparent;
             border: 1px solid #555;
             color: #fff;
@@ -82,16 +82,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            margin-bottom: 10px;
+            display: block;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
         }
 
-        button.trigger-btn:hover {
+        .trigger-btn:hover {
             background-color: #e0e0e0;
             color: #0a0a0a;
             border-color: #e0e0e0;
         }
+        
+        /* Action Group for bottom buttons */
+        .action-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
 
-        /* The Form Architecture (Hidden by default) */
+        /* The Form Architecture */
         #commission-form-container {
             display: none;
             text-align: left;
@@ -181,8 +193,15 @@
             margin-bottom: 5px;
         }
 
-        /* Instagram Link */
-        .insta-link {
+        /* External Links (Insta & Email) */
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .footer-link {
             display: inline-block;
             font-size: 10px;
             text-transform: uppercase;
@@ -191,11 +210,11 @@
             text-decoration: none;
             border-bottom: 1px solid #333;
             padding-bottom: 4px;
-            margin-bottom: 50px;
             transition: all 0.3s ease;
+            align-self: center;
         }
 
-        .insta-link:hover {
+        .footer-link:hover {
             color: #ffffff;
             border-color: #ffffff;
         }
@@ -304,9 +323,17 @@
             </ol>
         </div>
 
+        <div class="action-group">
+            <button class="trigger-btn" id="bottom-form-btn">Initiate Your Commission</button>
+            <a href="mailto:studio@nacresque.com?subject=Technical%20Video%20Briefing%20Request" class="trigger-btn">Schedule a Technical Video Briefing</a>
+        </div>
+
         <img class="content-image" src="" alt="Nacresque Export Logistics">
 
-        <a href="https://instagram.com/nacresquebespoke" class="insta-link" target="_blank">Instagram / @nacresquebespoke</a>
+        <div class="footer-links">
+            <a href="mailto:studio@nacresque.com" class="footer-link">Direct Inquiries / studio@nacresque.com</a>
+            <a href="https://instagram.com/nacresquebespoke" class="footer-link" target="_blank">Instagram / @nacresquebespoke</a>
+        </div>
 
         <div class="footer">
             <span class="terms-toggle" id="terms-btn">Terms of Commission +</span>
@@ -317,10 +344,11 @@
     </div>
 
     <script>
-        // Form Toggle
         const openFormBtn = document.getElementById('open-form-btn');
+        const bottomFormBtn = document.getElementById('bottom-form-btn');
         const formContainer = document.getElementById('commission-form-container');
 
+        // Top Button Logic
         openFormBtn.addEventListener('click', () => {
             if (formContainer.style.display === 'block') {
                 formContainer.style.display = 'none';
@@ -330,6 +358,15 @@
                 openFormBtn.textContent = 'Close Form';
                 formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+        });
+
+        // Bottom Button Logic (Scrolls up to form)
+        bottomFormBtn.addEventListener('click', () => {
+            if (formContainer.style.display !== 'block') {
+                formContainer.style.display = 'block';
+                openFormBtn.textContent = 'Close Form';
+            }
+            formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
 
         // Terms Toggle
