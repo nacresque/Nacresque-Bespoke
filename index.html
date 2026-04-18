@@ -159,6 +159,37 @@
             letter-spacing: 0.15em;
             cursor: pointer;
             margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        button.submit-btn:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+            color: #8c8c8c;
+        }
+
+        /* Success Message Architecture */
+        #form-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #form-success h3 {
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ffffff;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        #form-success p {
+            font-size: 11px;
+            color: #8c8c8c;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            margin: 0;
         }
 
         /* Commission Protocol Layout */
@@ -181,6 +212,7 @@
         .protocol-section li {
             margin-bottom: 25px;
             padding-left: 10px;
+            list-style-type: decimal; /* Ensures ordered list numbers correctly */
         }
 
         .protocol-section strong {
@@ -193,7 +225,7 @@
             margin-bottom: 5px;
         }
 
-        /* External Links (Insta & Email) */
+        /* External Links (Insta, Pinterest & Email) */
         .footer-links {
             display: flex;
             flex-direction: column;
@@ -260,42 +292,48 @@
 
         <img class="landscape-image" src="" alt="Nacresque Material Standard">
 
-        <button class="trigger-btn" id="open-form-btn">Request Material Standard</button>
+        <button class="trigger-btn" id="open-form-btn">Request Physical Material Block</button>
 
         <div id="commission-form-container">
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+            <form id="bespoke-form" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                <div id="form-elements">
+                    <div class="form-group">
+                        <label for="email">Business Mail Only *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studio">Studio Name *</label>
+                        <input type="text" id="studio" name="studio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website URL</label>
+                        <input type="url" id="website" name="website" placeholder="https://">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Primary Application Interest *</label>
+                        <select id="interest" name="interest" required>
+                            <option value="" disabled selected>Select an application...</option>
+                            <option value="Active Residential Project">Active Residential Project</option>
+                            <option value="Active Non-Residential Project">Active Non-Residential Project</option>
+                            <option value="Sourcing for Studio Material Library">Sourcing for Studio Material Library</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Delivery Address (For Aramex Courier) *</label>
+                        <textarea id="address" name="address" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">Submit Credentials</button>
+                </div>
                 
-                <div class="form-group">
-                    <label for="email">Business Mail Only *</label>
-                    <input type="email" id="email" name="email" required>
+                <div id="form-success">
+                    <h3>Credentials Received</h3>
+                    <p>If your studio aligns with our current commissioning capacity, your physical material block will be dispatched via Aramex.<br><br>The atelier will be in touch.</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="studio">Studio Name *</label>
-                    <input type="text" id="studio" name="studio" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="website">Website URL</label>
-                    <input type="url" id="website" name="website" placeholder="https://">
-                </div>
-
-                <div class="form-group">
-                    <label for="interest">Primary Application Interest *</label>
-                    <select id="interest" name="interest" required>
-                        <option value="" disabled selected>Select an application...</option>
-                        <option value="Active Residential Project">Active Residential Project</option>
-                        <option value="Active Non-Residential Project">Active Non-Residential Project</option>
-                        <option value="Sourcing for Studio Material Library">Sourcing for Studio Material Library</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Delivery Address (For Aramex Courier) *</label>
-                    <textarea id="address" name="address" required></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Credentials</button>
             </form>
         </div>
 
@@ -305,19 +343,19 @@
             <h2>Commission Protocol</h2>
             <ol>
                 <li>
-                    <strong>1. Studio Specification</strong>
-                    Submit dimensions, functional requirements, and blueprints for your projects.
+                    <strong>Studio Specification</strong>
+                    Submit dimensions, functional requirements, and blueprints for your active project.
                 </li>
                 <li>
-                    <strong>2. Shop Drawing</strong>
+                    <strong>Shop Drawing</strong>
                     We return bespoke architectural drafts, scaling our nacre style to your specifications alongside the commission quote.
                 </li>
                 <li>
-                    <strong>3. Execution</strong>
-                    The first deposit initiates production. You will be provided with weekly step-by-step visual documentation from the cutting of raw walnut to the final nacre polish.
+                    <strong>Execution</strong>
+                    A 50% deposit initiates production. You will be provided with weekly step-by-step visual documentation from the cutting of raw walnut to the final nacre polish.
                 </li>
                 <li>
-                    <strong>4. Export & Delivery</strong>
+                    <strong>Export & Delivery</strong>
                     The final deposit initiates dispatch. All international freight, export clearance, and direct-to-site deliveries are managed through the Aramex global logistics network.
                 </li>
             </ol>
@@ -325,7 +363,7 @@
 
         <div class="action-group">
             <button class="trigger-btn" id="bottom-form-btn">Initiate Your Commission</button>
-            <a href="https://calendly.com/https://calendly.com/https://calendly.com/https://calendly.com/weam-nacresquebespoke/30min" class="trigger-btn" target="_blank">Schedule a Technical Video Briefing</a>
+            <a href="https://calendly.com/YOUR-LINK-HERE" class="trigger-btn" target="_blank">Schedule a Technical Video Briefing</a>
         </div>
 
         <img class="content-image" src="" alt="Nacresque Export Logistics">
@@ -333,6 +371,7 @@
         <div class="footer-links">
             <a href="mailto:weam@nacresquebespoke.com" class="footer-link">Direct Inquiries / weam@nacresquebespoke.com</a>
             <a href="https://instagram.com/nacresquebespoke" class="footer-link" target="_blank">Instagram / @nacresquebespoke</a>
+            <a href="https://pin.it/5grrfCQOq" class="footer-link" target="_blank">Pinterest / Nacresque Bespoke</a>
         </div>
 
         <div class="footer">
@@ -352,7 +391,7 @@
         openFormBtn.addEventListener('click', () => {
             if (formContainer.style.display === 'block') {
                 formContainer.style.display = 'none';
-                openFormBtn.textContent = 'Request Material Standard';
+                openFormBtn.textContent = 'Request Physical Material Block';
             } else {
                 formContainer.style.display = 'block';
                 openFormBtn.textContent = 'Close Form';
@@ -367,6 +406,45 @@
                 openFormBtn.textContent = 'Close Form';
             }
             formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // Background Form Submission (AJAX)
+        const form = document.getElementById('bespoke-form');
+        const formElements = document.getElementById('form-elements');
+        const formSuccess = document.getElementById('form-success');
+        const submitBtn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Visual loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Hide the inputs and show the sleek success message
+                    formElements.style.display = 'none';
+                    formSuccess.style.display = 'block';
+                } else {
+                    alert('There was a problem submitting your credentials. Please check your details and try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert('Connection error. Please try again or email us directly.');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
         // Terms Toggle
